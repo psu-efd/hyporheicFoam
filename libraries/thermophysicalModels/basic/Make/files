@@ -1,0 +1,9 @@
+incompressibleTransportModel/incompressibleTransportModel.C
+
+basicThermo/basicThermo.C
+fluidThermo/fluidThermo.C
+
+rhoThermo/rhoThermo.C
+rhoThermo/rhoThermos.C
+
+LIB = $(FOAM_USER_LIBBIN)/librt_fluidThermophysicalModels

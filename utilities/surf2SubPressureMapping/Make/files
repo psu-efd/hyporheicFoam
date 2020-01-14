@@ -1,0 +1,3 @@
+surf2SubPressureMapping.C
+
+EXE = $(FOAM_USER_APPBIN)/surf2SubPressureMapping

@@ -1,0 +1,11 @@
+# Region type : patch bottom
+# Faces  :   120
+# Area   :   1.257186e-02
+# Time       	sum(advectiveCFluxSurf)
+1            	7.023422e-08
+2            	7.010299e-08
+3            	7.001173e-08
+4            	6.991395e-08
+5            	6.981706e-08
+6            	6.972220e-08
+7            	6.963268e-08

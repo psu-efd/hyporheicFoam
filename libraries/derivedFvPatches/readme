@@ -1,0 +1,10 @@
+Original BCs: 
+	1. subsurfaceTopBC: mixed, depending on the flux sign
+	2. surfaceBottomBC: mixed, depending on the flux sign
+
+New BCs to ensure the diffusive flux is the same (this is not used as of Feb. 2019):
+	1. subsurfaceTopFixedValueBC: fixed value
+	2. surfaceBottomFixedValueBC: fixed value
+
+zeroNetFluxVelocity: zero out the fluid flux across the interface. Otherwise in an enclosed 
+        domain the fluid solver complains about continuity error.

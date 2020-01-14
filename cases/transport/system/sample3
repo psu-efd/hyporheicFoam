@@ -1,0 +1,48 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  5                                     |
+|   \\  /    A nd           | Web:      www.OpenFOAM.org                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    location    "system";
+    object      sample;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+type surfaces;
+libs            ("libsampling.so");
+
+interpolationScheme cellPoint;
+
+surfaceFormat       vtk;
+
+surfaces
+(
+        slice 
+        {
+            type            plane;
+            planeType       pointAndNormal;
+
+            pointAndNormalDict
+            {
+            	basePoint    (0 0 0.05);
+            	normalVector (0 0 1);
+            }
+
+            //- Optional: restrict to a particular zone
+            zone sampleCells;
+            interpolate     true;
+        }
+);
+
+
+fields          ( U CO2 O2);
+
+
+// ************************************************************************* //

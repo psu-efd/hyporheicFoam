@@ -1,0 +1,53 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  1.6                                   |
+|   \\  /    A nd           | Web:      www.OpenFOAM.org                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    location    "constant";
+    object      transportProperties;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+//intrinsic permeability
+k              k [ 0 2 0 0 0 0 0 ] 4e-10;
+//k              k [ 0 2 0 0 0 0 0 ] 8.84e-10;
+
+//sediment matrix compressibility
+alpha      alpha  [ -1 1 2 0 0 0 0 ] 5e-07;
+
+//porewater compressibility
+beta       beta   [ -1 1 2 0 0 0 0 ] 4.8e-10;
+
+//porosity
+theta     theta   [ 0 0 0 0 0 0 0 ] 0.33;
+
+//porewater dynamic viscosity
+mu            mu  [1 -1 -1 0 0 0 0 ] 0.001;
+
+//whether to solve scalar transport in subsurface domain
+CSubSwitch off;
+
+//whether to solve chemical reactive transport in subsurface domain
+cheSubSwitch off;
+
+//longitudinal dispersivity (Length)
+alpha_L       alpha_L  [0 1 0 0 0 0 0 ] 0.001;
+
+//transverse dispersivity (Length)
+alpha_T       alpha_T  [0 1 0 0 0 0 0 ] 0.0001;
+
+//molecular diffusion coefficient
+Dm            Dm [0 2 -1 0 0 0 0 ] 5e-10;
+
+//whether to apply the surface pressure gradient in subsurface domain
+gradPSwitch on;
+
+
+// ************************************************************************* //

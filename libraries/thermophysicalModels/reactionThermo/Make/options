@@ -1,0 +1,9 @@
+EXE_INC = \
+    -I../../thermophysicalModels/basic/lnInclude \
+    -I../../thermophysicalModels/specie/lnInclude \
+    -I$(LIB_SRC)/finiteVolume/lnInclude
+
+LIB_LIBS = \
+    -L$(FOAM_USER_LIBBIN) -lrt_fluidThermophysicalModels \
+    -L$(FOAM_USER_LIBBIN) -lrt_specie \
+    -lfiniteVolume

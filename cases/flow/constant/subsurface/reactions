@@ -1,0 +1,94 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  2.3.0                                 |
+|   \\  /    A nd           | Web:      www.OpenFOAM.org                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    location    "constant";
+    object      simulationProperties;
+}
+elements
+(
+H
+C
+//N
+O
+)
+;
+
+species
+(
+CH2O
+O2
+CO2
+H2O
+//NO3
+//H
+//N2
+)
+;
+
+reactions
+{
+    aerobic_respiration 
+    {
+        type            irreversibleMonodArrheniusReaction;
+        reaction        "CH2O^0 + O2^0 = CO2^0 + H2O^0";
+        A               5.5E-6;        //mmol/L/s
+        //A               4.78E-1;     //mmol/L/d
+        beta            0;
+        Ta              0;
+
+        monod_coeffs
+4
+(
+(CH2O 1E-1)     
+(O2   6E-3)
+(CO2  0)
+(H2O  0)
+//(NO3  0)
+//(H    0)
+//(N2   0)
+);
+    }
+
+    //denitrification
+   // {
+      //  type            irreversibleMonodInhibitionArrheniusReaction;
+      //  reaction        "5CH2O^0 + 4NO3^0 + 4H^0 = 5CO2^0 + 2N2^0 + 7H2O^0";
+      //  A               1.0E-6;   //mmol/L/s
+        //A               8.6E-2;   //mmol/L/d
+       // beta            0;
+       // Ta              0;
+
+      //  monod_coeffs
+//7
+//(
+//(CH2O 1E-1)
+//(O2   0)
+//(CO2  0)
+//(H2O  0)
+//(NO3  3E-2)
+//(H    0)
+//(N2   0)
+//);
+
+       // inhibition_coeffs
+//7
+//(
+//(CH2O 0)
+//(O2   3E-2)
+//(CO2  0)
+//(H2O  0)
+//(NO3  0)
+//(H    0)
+///(N2   0)
+//);
+  //  }
+}

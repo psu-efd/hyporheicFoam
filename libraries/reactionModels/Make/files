@@ -1,0 +1,12 @@
+reactionModel/reactionModel.C
+
+rhoReactionModel/rhoReactionModel/rhoReactionModel.C
+rhoReactionModel/rhoReactionModel/rhoReactionModelNew.C
+rhoReactionModel/rhoThermoReaction/rhoThermoReaction.C
+rhoReactionModel/rhoChemistryReaction/rhoChemistryReaction.C
+
+laminar/laminars.C
+
+noReaction/noReactions.C
+
+LIB = $(FOAM_USER_LIBBIN)/librt_reactionModels

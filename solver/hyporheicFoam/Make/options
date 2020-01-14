@@ -1,0 +1,40 @@
+EXE_INC = \
+    -I./surface \
+    -I./subsurface \
+    -I../../libraries/derivedFvPatches/lnInclude \
+    -I$(LIB_SRC)/TurbulenceModels/turbulenceModels/lnInclude \
+    -I$(LIB_SRC)/TurbulenceModels/incompressible/lnInclude \
+    -I$(LIB_SRC)/transportModels \
+    -I$(LIB_SRC)/transportModels/incompressible/singlePhaseTransportModel \
+    -I../../libraries/thermophysicalModels/specie/lnInclude \
+    -I../../libraries/thermophysicalModels/reactionThermo/lnInclude \
+    -I../../libraries/thermophysicalModels/basic/lnInclude \
+    -I../../libraries/thermophysicalModels/chemistryModel/lnInclude \
+    -I../../libraries/fvOptions/lnInclude \
+    -I../../libraries/reactionModels/lnInclude \
+    -I$(LIB_SRC)/ODE/lnInclude \
+    -I$(LIB_SRC)/finiteVolume/lnInclude \
+    -I$(LIB_SRC)/meshTools/lnInclude \
+    -I$(LIB_SRC)/fvOptions/lnInclude \
+    -I$(LIB_SRC)/sampling/lnInclude 
+
+
+EXE_LIBS = \
+    -L$(FOAM_USER_LIBBIN) -lhyporheic\
+    -L$(FOAM_USER_LIBBIN) -lfieldFunctionObjects\
+    -lturbulenceModels \
+    -lincompressibleTurbulenceModels \
+    -lincompressibleTransportModels \
+    -lfiniteVolume \
+    -lmeshTools \
+    -lfvOptions \
+    -lsampling \
+    -lODE \
+    -L$(FOAM_USER_LIBBIN) -lrt_reactionThermophysicalModels \
+    -L$(FOAM_USER_LIBBIN) -lrt_specie \
+    -L$(FOAM_USER_LIBBIN) -lrt_fluidThermophysicalModels \
+    -L$(FOAM_USER_LIBBIN) -lrt_chemistryModel \
+    -L$(FOAM_USER_LIBBIN) -lrt_reactionModels \
+    -lpthread
+
+

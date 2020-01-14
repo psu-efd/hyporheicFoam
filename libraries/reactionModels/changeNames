@@ -1,0 +1,14 @@
+#!/bin/sh
+
+#recursively loop all files in the directory and replace
+#the word in the file name
+
+find . -type f -name "*" -print0 | while read -d $'\0' f
+do
+   new=`echo "$f" | sed -e "s/Combustion/Reaction/"`
+   
+   if [ "$f" != "$new" ]
+   then 
+      mv "$f" "$new"
+   fi
+done
