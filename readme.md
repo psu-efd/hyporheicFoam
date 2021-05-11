@@ -28,6 +28,6 @@ Department of Civil and Environmental Engineering
 Penn State University  
 
 ## License ##
-MIT License
+GPL v3
 
 
