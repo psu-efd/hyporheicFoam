@@ -8,6 +8,13 @@ The code is developed with OpenFOAM v5. To use this code, it is required that Op
 ## Acknowledgements ##
 
 This code is develped with the supported by the U.S. Department of Energy (DOE), Office of Biological and Environmental Research (BER), as part of BER Subsurface Biogeochemical Research Program (SBR), under award DE-SC0018042. 
+
+
+## Disclaimer ##
+This offering is not approved or endorsed by OpenCFD Limited, producer and distributor of the OpenFOAM software via <www.openfoam.com>, and owner of the OPENFOAM&reg;  and OpenCFD&reg; trade marks.
+
+OPENFOAM&reg; is a registered trade mark of OpenCFD Limited, producer and distributor of the OpenFOAM software via <www.openfoam.com>.
+
 ## Authors and contributors: ##
 Xiaofeng Liu, Ph.D., P.E.  
 Associate Professor  
