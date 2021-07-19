@@ -1,0 +1,162 @@
+
+
+                      OTIS SOLUTE TRANSPORT MODEL            
+                      Version: MOD40 (Feb. 1998)    
+                      --------------------------
+
+
+          Runtime Information
+          -------------------
+          Date and Time :  24-Jun-21 20:41:19
+
+
+
+          Input Files
+          -----------
+          PARAMETER FILE: params.inp                              
+          FLOW FILE     : q.inp                                   
+
+
+
+          Input Data
+          ----------
+
+          Bencala & Walters, Uvas Creek Chloride                                          
+
+
+          Print Option                              :     2
+          Requested Print Interval              [hr]:   1.00000E-03
+          Integration Time Step                 [hr]:   1.00000E-04
+          Starting Time                         [hr]:   0.00000E+00
+          Ending Time                           [hr]:   2.40000E+01
+          Starting Distance                      [L]:   0.00000E+00
+          Downstream Boundary Condition [mass/L^2-s]:   0.00000E+00
+          Simulation Type  [dynamic or steady-state]:       Dynamic
+
+
+
+          Number of Reaches  :     1
+
+
+          Reach Information
+          -----------------
+
+          Reach   Start    End    Start           End
+          No.     Seg.     Seg.   Distance [L]    Distance [L]
+          ----------------------------------------------------
+              1       1    5000       0.000        1000.000
+
+
+
+          Number of Spatial Segments    : 5000
+
+
+          Reach Parameters
+          ----------------
+
+          Reach  No.     Reach         Segment      Dispersion
+          No.    Segs.   Length [L]    Length [L]   Coeff.[L^2/s]
+          --------------------------------------------------------
+             1    5000     1000.000        0.200    8.40000E-03
+
+
+          Storage Parameters
+          ------------------
+                 Storage      Storage
+          Reach  Zone Area    Rate
+          No.    [L^2]        [/sec]
+          ---------------------------------
+              1  4.45000E-04  5.00000E-06
+
+
+
+          Number of Solutes:   1
+          Decay Option     :   0
+          Sorption Option  :   0
+
+
+
+          Number of Print Locations :   3
+          Interpolation Option      :   1
+
+          Printing Information
+          --------------------
+          Requested         Effective
+          Print             Print
+          Location [L]      Location [L]
+          ------------------------------
+                50.000            50.000
+               500.000           500.000
+               950.000           950.000
+
+
+
+          Flow and Area Data
+          ------------------
+          Flow Option                              :   Steady  
+          Flow interval                       [hr] :   0.00000E+00
+
+
+          Initial Flow and Area Values
+          ----------------------------
+
+          Flowrate at Upstream Boundary    [L^3/sec]:   3.10000E-05
+
+
+                    Lateral         Lateral         X-sect.
+          Reach     Inflow          Outflow         Area
+          No.       [L^3/s-L]       [L^3/s-L]       [L^2]
+          -------------------------------------------------------
+              1     0.00000E+00     0.00000E+00     5.50000E-04
+
+
+          Initial Lateral Inflow Concentrations, Solute #  1
+          ---------------------------------------------------
+                     Inflow
+          Reach      Concent.
+          No.        [mass/L^3]
+          -----------------------
+             1       0.00000E+00
+
+
+          Number of Upstream Boundary Conditions:   3
+          Boundary Condition Option             :   1
+
+
+          Upstream Boundary Conditions, Solute #  1
+          -------------------------------------------
+          Begin                Concentration
+          Time [hour]          [mass/L^3]
+          ----------------------------------
+           0.0000E+00           0.0000E+00
+           1.7000E-01           1.0000E+01
+           3.3000E-01           0.0000E+00
+
+
+          Output Files for Solutes
+          ------------------------
+          Solute #            File Name
+          ---------------------------------
+                1             cl.out                                  
+
+
+          Initial Conditions at the Print Locations
+          -----------------------------------------
+
+          Location  Prev.    Inter.         Flow
+          [L]       Seg.     Weight        [L^3/sec]
+          ----------------------------------------------
+              50.00   250   5.000000E-01   3.100000E-05
+             500.00  2500   5.000000E-01   3.100000E-05
+             950.00  4750   5.000000E-01   3.100000E-05
+
+
+          Initial Conditions, Solute #  1
+          --------------------------------
+                              Concentration
+          Location        Channel       Storage
+          [L]            [mass/L^3]    [mass/L^3]
+          -----------------------------------------
+              50.00       0.000E+00     0.000E+00
+             500.00       0.000E+00     0.000E+00
+             950.00       0.000E+00     0.000E+00

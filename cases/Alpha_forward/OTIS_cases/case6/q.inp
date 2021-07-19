@@ -1,0 +1,27 @@
+##########################################################################
+#
+#                        OTIS steady flow file
+#
+#   1972 Uvas Creek Tracer Injection
+#   Conservative Transport of Chloride
+#
+#   Parameter Values from:
+#
+#   Bencala, K.E. and R.A. Walters, 1983, Water Resour.Res.,19(3),718-724.
+#
+##########################################################################
+0.00                 QSTEP [hour]
+0.000031            QSTART [L^3/sec]
+############################################################
+#            for I = 1, NREACH
+#
+#QLATIN       QLATOUT      AREA         (CLATIN J=1,NSOLUTE)
+#            |            |            |            |
+############################################################
+0.00         0.00         0.00055      0
+
+
+
+
+
+

@@ -1,0 +1,16 @@
+########################################################################
+#
+#                        OTIS control file
+#
+#
+# line                         name of the:
+# ----                         --------------
+# 1                            parameter file
+# 2                            flow file
+# 3 to 2+NSOLUTE               solute output files
+# 3+NSOLUTE to 2+(NSOLUTE*2)   sorption output files (ISORB=0 only)
+#
+########################################################################
+params.inp
+q.inp
+cl.out
