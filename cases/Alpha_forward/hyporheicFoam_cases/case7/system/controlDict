@@ -1,0 +1,539 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  2.3.0                                 |
+|   \\  /    A nd           | Web:      www.OpenFOAM.org                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    object      controlDict;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+libs
+(
+//"libhyporheicFvOptions.so"
+);
+
+
+application     hyporheicScalarFoam;
+
+startFrom       latestTime;
+//startFrom       startTime;
+
+startTime       3000;
+
+stopAt          endTime;
+
+endTime         12000;
+
+deltaT          0.014;
+
+writeControl    adjustableRunTime;
+//writeControl    timeStep;
+
+//writeInterval   1.2;
+writeInterval   600;
+
+purgeWrite      0;
+
+writeFormat     ascii;
+
+writePrecision  6;
+
+writeCompression off;
+
+timeFormat      general;
+
+timePrecision   6;
+
+runTimeModifiable true;
+
+adjustTimeStep  yes;
+
+maxCo           0.5;
+
+maxDeltaT       0.1;
+
+
+
+functions
+{
+    //calculate the total fluid flux across the bottom boundary of surface domain
+    totalFluxSurf
+    {
+        type            surfaceFieldValue;
+        libs            ("libfieldFunctionObjects.so");
+        enabled         true;
+        writeControl    timeStep;
+        writeInterval  1;
+
+        // Output to log&file (true) or to file only
+        log             true;
+        // Output field values as well
+        writeFields     false;
+        // Type of source: patch/faceZone/sampledSurface
+        region          surface;
+        regionType      patch;
+        name            bottom;
+
+        operation       sum;
+
+        fields
+        (
+            phi
+        );
+    }
+
+    //calculate the upwelling fluid flux across the bottom boundary of surface domain
+    upwellingFluxSurf
+    {
+        type            surfaceFieldValue;
+        libs            ("libfieldFunctionObjects.so");
+        enabled         true;
+        writeControl    timeStep;
+        writeInterval  60;
+
+        // Output to log&file (true) or to file only
+        log             true;
+        // Output field values as well
+        writeFields     false;
+        // Type of source: patch/faceZone/sampledSurface
+        region          surface;
+        regionType      patch;
+        name            bottom;
+
+        operation       sumDirection;
+        direction   (0 1 0);
+
+        fields
+        (
+            phi
+        );
+    }
+
+    //calculate the downwelling fluid flux across the bottom boundary of surface domain
+    downwellingFluxSurf
+    {
+        type            surfaceFieldValue;
+        libs            ("libfieldFunctionObjects.so");
+        enabled         true;
+        writeControl    timeStep;
+        writeInterval  60;
+
+        // Output to log&file (true) or to file only
+        log             true;
+        // Output field values as well
+        writeFields     false;
+        // Type of source: patch/faceZone/sampledSurface
+        region          surface;
+        regionType      patch;
+        name            bottom;
+
+        operation       sumDirection;
+        direction   (0 -1 0);
+
+        fields
+        (
+            phi
+        );
+    }
+
+    //calculate the total fluid flux across the top boundary of subsurface domain
+    //Note: this is calcualted with pore-water velocity. To get real bulk fluid flux,
+    //      it needs to be multiplied by porosity!
+    totalFluxSub
+    {
+        type            surfaceFieldValue;
+        libs            ("libfieldFunctionObjects.so");
+        enabled         true;
+        writeControl    timeStep;
+        writeInterval  60;
+
+        // Output to log&file (true) or to file only
+        log             true;
+        // Output field values as well
+        writeFields     false;
+        // Type of source: patch/faceZone/sampledSurface
+        region          subsurface;
+        regionType      patch;
+        name            top;
+
+        operation       sum;
+
+        fields
+        (
+            phiSub
+        );
+    }
+
+    //calculate the upwelling fluid flux across the top boundary of subsurface domain
+    upwellingFluxSub
+    {
+        type            surfaceFieldValue;
+        libs            ("libfieldFunctionObjects.so");
+        enabled         true;
+        writeControl    timeStep;
+        writeInterval  60;
+
+        // Output to log&file (true) or to file only
+        log             true;
+        // Output field values as well
+        writeFields     false;
+        // Type of source: patch/faceZone/sampledSurface
+        region          subsurface;
+        regionType      patch;
+        name            top;
+
+        operation       sumDirection;
+        direction   (0 1 0);
+
+        fields
+        (
+            phiSub
+        );
+    }
+
+    //calculate the downwelling fluid flux across the top boundary of subsurface domain
+    downwellingFluxSub
+    {
+        type            surfaceFieldValue;
+        libs            ("libfieldFunctionObjects.so");
+        enabled         true;
+        writeControl    timeStep;
+        writeInterval  60;
+
+        // Output to log&file (true) or to file only
+        log             true;
+        // Output field values as well
+        writeFields     false;
+        // Type of source: patch/faceZone/sampledSurface
+        region          subsurface;
+        regionType      patch;
+        name            top;
+
+        operation       sumDirection;
+        direction   (0 -1 0);
+
+        fields
+        (
+            phiSub
+        );
+    }
+
+	
+    //calculate the total advective scalar flux across the bottom boundary of surface domain
+    totalCFluxSurf
+    {
+        type            surfaceFieldValue;
+        libs            ("libfieldFunctionObjects.so");
+        enabled         true;
+        writeControl    timeStep;
+        writeInterval  60;
+
+        // Output to log&file (true) or to file only
+        log             true;
+        // Output field values as well
+        writeFields     false;
+        // Type of source: patch/faceZone/sampledSurface
+        region          surface;
+        regionType      patch;
+        name            bottom;
+
+        operation       sum;
+
+        fields
+        (
+            advectiveCFluxSurf
+        );
+    }
+
+    //calculate the upwelling advective scalar flux across the bottom boundary of surface domain
+    upwellingCFluxSurf
+    {
+        type            surfaceFieldValue;
+        libs            ("libfieldFunctionObjects.so");
+        enabled         true;
+        writeControl    timeStep;
+        writeInterval  60;
+
+        // Output to log&file (true) or to file only
+        log             true;
+        // Output field values as well
+        writeFields     false;
+        // Type of source: patch/faceZone/sampledSurface
+        region          surface;
+        regionType      patch;
+        name            bottom;
+
+        operation       sumDirection;
+        direction   (0 1 0);
+
+        fields
+        (
+            advectiveCFluxSurf
+        );
+    }
+
+    //calculate the downwelling advective scalar flux across the bottom boundary of surface domain
+    downwellingCFluxSurf
+    {
+        type            surfaceFieldValue;
+        libs            ("libfieldFunctionObjects.so");
+        enabled         true;
+        writeControl    timeStep;
+        writeInterval  60;
+
+        // Output to log&file (true) or to file only
+        log             true;
+        // Output field values as well
+        writeFields     false;
+        // Type of source: patch/faceZone/sampledSurface
+        region          surface;
+        regionType      patch;
+        name            bottom;
+
+        operation       sumDirection;
+        direction   (0 -1 0);
+
+        fields
+        (
+            advectiveCFluxSurf
+        );
+    }
+
+    //calculate the total scalar flux across the top boundary of subsurface domain
+    //Porosity is already taken into consideration in advectiveCFluxSub. 
+    //So these are real scalar flux.
+    totalCFluxSub
+    {
+        type            surfaceFieldValue;
+        libs            ("libfieldFunctionObjects.so");
+        enabled         true;
+        writeControl    timeStep;
+        writeInterval  60;
+
+        // Output to log&file (true) or to file only
+        log             true;
+        // Output field values as well
+        writeFields     false;
+        // Type of source: patch/faceZone/sampledSurface
+        region          subsurface;
+        regionType      patch;
+        name            top;
+
+        operation       sum;
+
+        fields
+        (
+            advectiveCFluxSub
+        );
+    }
+
+    //calculate the upwelling fluid flux across the top boundary of subsurface domain
+    upwellingCFluxSub
+    {
+        type            surfaceFieldValue;
+        libs            ("libfieldFunctionObjects.so");
+        enabled         true;
+        writeControl    timeStep;
+        writeInterval  60;
+
+        // Output to log&file (true) or to file only
+        log             true;
+        // Output field values as well
+        writeFields     false;
+        // Type of source: patch/faceZone/sampledSurface
+        region          subsurface;
+        regionType      patch;
+        name            top;
+
+        operation       sumDirection;
+        direction   (0 1 0);
+
+        fields
+        (
+            advectiveCFluxSub
+        );
+    }
+
+    //calculate the downwelling fluid flux across the top boundary of subsurface domain
+    downwellingCFluxSub
+    {
+        type            surfaceFieldValue;
+        libs            ("libfieldFunctionObjects.so");
+        enabled         true;
+        writeControl    timeStep;
+        writeInterval  60;
+
+        // Output to log&file (true) or to file only
+        log             true;
+        // Output field values as well
+        writeFields     false;
+        // Type of source: patch/faceZone/sampledSurface
+        region          subsurface;
+        regionType      patch;
+        name            top;
+
+        operation       sumDirection;
+        direction   (0 -1 0);
+
+        fields
+        (
+            advectiveCFluxSub
+        );
+    }	
+	
+
+    //total scalar in surface domain 
+    totalC_surf
+    {
+        type            volFieldValue;
+        libs            ("libfieldFunctionObjects.so");
+        enabled         true;
+        writeControl    timeStep;
+        writeInterval  60;
+
+        // Output to log&file (true) or to file only
+        log             true;
+        // Output field values as well
+        writeFields     false;
+        // Type of source: patch/faceZone/sampledSurface
+        region          surface;
+
+        operation       volIntegrate;
+
+        fields
+        (
+           C 
+        );
+    }
+
+	//total scalar in subsurface domain
+    totalC_sub
+    {
+        type            volFieldValue;
+        libs            ("libfieldFunctionObjects.so");
+        enabled         true;
+        writeControl    timeStep;
+        writeInterval  60;
+
+        // Output to log&file (true) or to file only
+        log             true;
+        // Output field values as well
+        writeFields     false;
+        // Type of source: patch/faceZone/sampledSurface
+        region          subsurface;
+
+        operation       volIntegrate;
+
+        fields
+        (
+           C
+        );
+    }
+
+    //fieldAverage in the surface domain
+    surfAvg
+    {
+        type fieldAverage;
+        libs ("libfieldFunctionObjects.so");
+        enabled         true;
+        writeControl    writeTime;
+        restartOnRestart    false;
+        restartOnOutput     false;
+        region              surface;
+
+        fields
+        (
+            U
+            {
+                mean            on;
+                prime2Mean      on;
+                base            time;
+            }
+            p
+            {
+                mean            on;
+                prime2Mean      on;
+                base            time;
+            }
+            k
+            {
+                mean            on;
+                prime2Mean      off;
+                base            time;
+            }
+            omega
+            {
+                mean            on;
+                prime2Mean      off;
+                base            time;
+            }
+            nut
+            {
+                mean            on;
+                prime2Mean      off;
+                base            time;
+            }
+            phi
+            {
+                mean            on;
+                prime2Mean      off;
+                base            time;
+            }
+            Dt_Coeff
+            {
+                mean            on;
+                prime2Mean      off;
+                base            time;
+            }
+        );
+    }
+
+    //fieldAverage in the subsurface domain
+    subAvg
+    {
+        type fieldAverage;
+        libs ("libfieldFunctionObjects.so");
+        enabled         true;
+        writeControl    writeTime;
+        restartOnRestart    false;
+        restartOnOutput     false;
+        region          subsurface;
+
+        fields
+        (
+            U
+            {
+                mean            on;
+                prime2Mean      on;
+                base            time;
+            }
+            p
+            {
+                mean            on;
+                prime2Mean      on;
+                base            time;
+            }
+            DSub_Coeff
+            {
+                mean            on;
+                prime2Mean      off;
+                base            time;
+            }
+            phiSub
+            {
+                mean            on;
+                prime2Mean      off;
+                base            time;
+            }
+        );
+    }
+
+}
+
+// ************************************************************************* //
