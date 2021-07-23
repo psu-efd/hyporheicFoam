@@ -1,4 +1,6 @@
-# This repository is for the study of the physical meaning of the Alpha in TSM.
+# Readme
+
+This repository is for the study of the physical meaning of the $\alpha$ in TSM.
 
 
 # In OTIS_cases, the user can find the cases used for the OTIS. The folder contains 12 cases. 
