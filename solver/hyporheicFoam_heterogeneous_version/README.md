@@ -9,8 +9,8 @@ and subsurface flows).
 * using this solver to solve case.
 * the heterogeneous sediment can be solved through this heterogeneous version.
 
-## Credit: ##a
-* This code uses some of the functionalities of. 
+## Credit: ##
+* This code uses some of the functionalities of OpenFOAM. 
 Xiaofeng Liu, Bing Li.
 Penn State University
 
