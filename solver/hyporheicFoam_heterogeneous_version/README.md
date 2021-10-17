@@ -7,7 +7,7 @@ and subsurface flows).
 ## Note: ##
 * two-way coupling only for now, i.e., with feedback from the subsurface to the surface flow.  
 * using this solver to solve case.
-* the heterogeneous sediment can be solved through this heterogeneous version.
+* In this heterogeneous version, a permeability field has been add to study the heterogeneous sediment.
 
 ## Credit: ##
 * This code uses some of the functionalities of OpenFOAM. 
